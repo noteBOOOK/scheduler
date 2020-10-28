@@ -55,9 +55,7 @@ import { getAppointmentsForDay } from "helpers/selectors";
 
 export default function Application(props) {
 
-
   const setDay = day => setState({ ...state, day});
-
 
   const [state, setState] = useState({
     day: "Monday",
@@ -108,6 +106,5 @@ export default function Application(props) {
       </section>
     </main>
   );
-  
 }
 
