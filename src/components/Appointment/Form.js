@@ -16,6 +16,8 @@ function Form(props) {
     reset()
   }
 
+  console.log(props);
+
   return(
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
