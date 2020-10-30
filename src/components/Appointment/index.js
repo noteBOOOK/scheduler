@@ -9,6 +9,7 @@ import useVisualMode from "../../hooks/useVisualMode";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import EditForm from "./EditForm";
 
 
 
@@ -20,6 +21,7 @@ function Appointment(props) {
   const SAVING = "SAVING";
   const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
+  const EDIT = "EDIT";
 
  
 
@@ -59,15 +61,26 @@ function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={() => back()}
         />
-        )}
+      )}
+      {mode === EDIT && (
+        <EditForm
+          bookInterview={props.bookInterview}
+          onSave={save}
+          interviewers={props.interviewers}
+          onCancel={() => back()}
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+        />
+      )}
       {mode === SHOW && (
         <Show 
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onCancel={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
-        
       )}
+
       {mode === SAVING && (
         <Status message={"Saving"}/>
       )}
