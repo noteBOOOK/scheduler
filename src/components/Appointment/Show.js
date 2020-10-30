@@ -2,6 +2,9 @@ import React from "react";
 
 function Show(props) {
 
+  const cancel = function() {
+    props.onCancel();
+  }
 
   return(
     <main className="appointment__card appointment__card--show">
@@ -24,7 +27,7 @@ function Show(props) {
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
-            onClick={props.onDelete}
+            onClick={cancel}
           />
         </section>
       </section>
