@@ -16,7 +16,6 @@ export default function Application(props) {
     appointments: {},
     interviewers: {}
   })
-
   
   useEffect(() => {
     Promise.all([
@@ -24,18 +23,41 @@ export default function Application(props) {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ]).then((all) => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}))
+      setState(prev => ({...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data
+      }))
     })
   }, [])
-  
+
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    console.log(appointment);
+    console.log(appointments);
+    setState({
+      ...state,
+      appointments
+    });
+    // console.log(state.appointments);
+  };
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
-
-  // console.log(dailyInterviewers);
 
   const parsedAppointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
     
+    // console.log("CHECK HERE: ", appointment.interview);
+    // console.log("CHECK: ", interview);
+
     return (
       <Appointment 
         key={appointment.id}
@@ -43,10 +65,12 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
+
         {...appointment} />
     )
   })
-  
+
   return (
     <main className="layout">
       <section className="sidebar">

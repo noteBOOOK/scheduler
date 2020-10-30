@@ -22,12 +22,31 @@ function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    console.log(interview);
+    props.bookInterview(props.id, interview);
+    transition(SHOW);
+  };
+  
+  // console.log(props);
+
   return (
     <article className="appointment">
       <Header time={props.time} />
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} />}
+      {mode === CREATE && (
+        <Form 
+          bookInterview={props.bookInterview}
+          onSave={save}
+          interviewers={props.interviewers}
+          onCancel={() => back()}
+        />
+        )}
       {mode === SHOW && (
         <Show 
           student={props.interview.student}
