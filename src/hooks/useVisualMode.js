@@ -27,7 +27,5 @@ export default function useVisualMode(initial) {
       setMode(historyCopy[historyCopy.length - 1]);
     }
   }
-  console.log(history);
   return { mode, transition, back };
-
 }
