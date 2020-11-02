@@ -41,14 +41,7 @@ export default function useApplicationData(initial) {
     setState(prev => ({...prev,
       days: listOfDays
     }))
-    // console.log(currentDay[0]);
-    // console.log(day);
   }, [state.appointments])
-
-
-  // console.log(state.day)
-  // console.log(state);
-  
   
   function bookInterview(id, interview) {
     const appointment = {
@@ -89,13 +82,6 @@ export default function useApplicationData(initial) {
       });
     });
   }
-
-
-  // console.log(filteredAppointments);
-  // console.log(state);
-
-  // console.log(state.appointments.interview);
-  // console.log(listOfAppointments);
 
   return {state, setDay, bookInterview, cancelInterview}
 }
