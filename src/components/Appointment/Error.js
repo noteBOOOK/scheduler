@@ -1,7 +1,8 @@
 import React from "react";
 
-function Error(props){
 
+// Component for Error Message
+function Error(props){
 
   return(
     <main className="appointment__card appointment__card--error">

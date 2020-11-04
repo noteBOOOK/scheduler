@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "components/Button";
 
+// Component for Confirmation Page
 function Confirm(props){
-
 
   return(
     <main className="appointment__card appointment__card--confirm">

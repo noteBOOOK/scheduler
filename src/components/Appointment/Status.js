@@ -1,8 +1,8 @@
 import React from "react";
 
+
+// Component for Status message
 function Status(props){
-
-
 
   return(
     <main className="appointment__card appointment__card--status">

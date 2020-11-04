@@ -13,7 +13,7 @@ import EditForm from "./EditForm";
 import Error from "./Error";
 
 
-
+// Component for Appointments
 function Appointment(props) {
 
   const EMPTY = "EMPTY";
@@ -26,12 +26,12 @@ function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
- 
 
   const {mode, transition, back} = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  // Function to Save interview
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -44,6 +44,7 @@ function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true))
   };
 
+  // Function to Cancel interview
   function cancel() {
     transition(DELETING, true);
     props
@@ -57,6 +58,7 @@ function Appointment(props) {
       <Header time={props.time} />
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      
       {mode === CREATE && (
         <Form 
           bookInterview={props.bookInterview}
@@ -65,6 +67,7 @@ function Appointment(props) {
           onCancel={() => back()}
         />
       )}
+
       {mode === EDIT && (
         <EditForm
           bookInterview={props.bookInterview}
@@ -75,6 +78,7 @@ function Appointment(props) {
           interviewer={props.interview.interviewer.id}
         />
       )}
+      
       {mode === SHOW && (
         <Show 
           student={props.interview.student}

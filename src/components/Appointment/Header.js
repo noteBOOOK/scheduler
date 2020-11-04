@@ -1,7 +1,8 @@
 import React from "react";
 
-function Header(props) {
 
+// Component for the Header
+function Header(props) {
 
   return(
     <header className="appointment__time">
