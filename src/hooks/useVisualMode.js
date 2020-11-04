@@ -4,7 +4,6 @@ export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-
   function transition(newMode, replace = false) {
     let historyCopy = [...history];
     if (replace) {

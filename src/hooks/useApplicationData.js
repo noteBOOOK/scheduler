@@ -4,9 +4,7 @@ import { getAppointmentsForDay } from "helpers/selectors";
 
 
 export default function useApplicationData(initial) {
-
   const setDay = day => setState({ ...state, day});
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -14,6 +12,7 @@ export default function useApplicationData(initial) {
     interviewers: {}
   })
 
+  // Axios GET request to Database
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -28,6 +27,7 @@ export default function useApplicationData(initial) {
     })
   }, [])
 
+  // Checks the amount of Interview Spots remaining for the selected day
   useEffect(() => {
     let listOfAppointments = getAppointmentsForDay(state, state.day);
     let numOfSpots = listOfAppointments.filter(appointment => !appointment.interview).length;
@@ -42,7 +42,8 @@ export default function useApplicationData(initial) {
       days: listOfDays
     }))
   }, [state.appointments])
-  
+
+  // Adds Interview to Database
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -63,6 +64,7 @@ export default function useApplicationData(initial) {
     })
   };
 
+  // Removes Interview from Database
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
