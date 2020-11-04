@@ -31,6 +31,7 @@ function EditForm(props) {
             placeholder="Enter your name"
             value={name}
             onChange={event => setName(event.target.value)}
+            data-testid="student-name-input"
           />
         </form>
         <InterviewerList 
