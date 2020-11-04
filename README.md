@@ -4,6 +4,10 @@ This App allows users to schedule interviews during an allotted time, write down
 Users will be able to create appointments where there are spots remaining. Users can also edit or delete created Appointments.
 
 ## Final Product
+!["Main Page of Application"](https://github.com/noteBOOOK/scheduler/blob/master/docs/main-page.png?raw=true)
+!["Add Interview Example"](https://github.com/noteBOOOK/scheduler/blob/master/docs/add-interview.png?raw=true)
+!["Example of Adding an Interview GIF"](https://gph.is/g/4bxv32G)
+
 
 ## Setup
 
