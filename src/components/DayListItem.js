@@ -1,9 +1,9 @@
 import React from "react";
-
 import classNames from "classnames";
-
 import "components/DayListItem.scss";
 
+
+// Component for the Individual Days
 export default function DayListItem(props) {
   
   const formatSpots = function(spots) {

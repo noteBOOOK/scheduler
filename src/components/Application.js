@@ -1,15 +1,14 @@
 import React from "react";
-
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
 
+// Component for the Application
 export default function Application(props) {
 
   const {state, setDay, bookInterview, cancelInterview} = useApplicationData()
-
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
@@ -31,7 +30,7 @@ export default function Application(props) {
     )
   })
 
-  // console.log(state);
+  ////////////////////////////////////////////////
 
   return (
     <main className="layout">
