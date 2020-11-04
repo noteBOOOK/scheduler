@@ -105,7 +105,7 @@ function Appointment(props) {
       )}
       {mode === ERROR_DELETE && (
         <Error 
-          message={"Error Deleteing"} 
+          message={"Error Deleting"} 
           onClose={() => back()}
         />
       )}
